@@ -2,11 +2,8 @@ import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
 
+const RenderDish = ({ dish }) => {
 
-
-
-
-function RenderDish({ dish }) {
     return (
         <Card >
             <CardImg width="100%" src={dish?.image} alt={dish?.name} />
@@ -17,8 +14,11 @@ function RenderDish({ dish }) {
         </Card>
     )
 
+
+
+
 }
-function RenderComments({ comments }) {
+const RenderComments = ({ comments }) => {
     if (comments) {
         return (
             <div>
@@ -54,7 +54,7 @@ function RenderComments({ comments }) {
 }
 
 const DishDetail = (props) => {
-    if (props.dish !== null) {
+    if (props.dish !== undefined) {
         return (
             <div className="container">
                 <div className="row">
