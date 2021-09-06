@@ -15,9 +15,6 @@ const RenderDish = ({ dish }) => {
         </Card>
     )
 
-
-
-
 }
 const RenderComments = ({ comments }) => {
     if (comments) {
