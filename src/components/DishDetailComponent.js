@@ -20,7 +20,7 @@ const RenderDish = ({ dish }) => {
     )
 
 }
-const RenderComments = ({ comments }) => {
+const RenderComments = ({ comments, addComment, dishId }) => {
     if (comments) {
         return (
             <div>
@@ -44,7 +44,7 @@ const RenderComments = ({ comments }) => {
 
 
                 </ul>
-                <CommentFrom />
+                <CommentFrom dishId={dishId} addComment={addComment} />
             </div>
         )
     } else {
@@ -75,7 +75,10 @@ const DishDetail = (props) => {
                         <RenderDish dish={props?.dish} />
                     </div>
                     <div className="col-md-5 col-xs-12 col-sm-12  m-1">
-                        <RenderComments comments={props?.comments} />
+                        <RenderComments
+                            addComment={props.addComment}
+                            dishId={props.dish.id}
+                            comments={props?.comments} />
                     </div>
                 </div>
             </div>
@@ -106,7 +109,8 @@ class CommentFrom extends Component {
     }
     handleSubmit(values) {
         this.toggleModal();
-        alert(JSON.stringify(values));
+        alert(JSON.stringify(values))
+        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment)
 
     }
     render() {
@@ -156,7 +160,7 @@ class CommentFrom extends Component {
                             <Row className="form-group">
                                 <Label htmlFor="comment">Comment</Label>
                                 <Col md={12}>
-                                    <Control.textarea model=".message" id="message" name="message"
+                                    <Control.textarea model=".comment" id="comment" name="comment"
                                         rows="6"
                                         className="form-control">
                                     </Control.textarea>
