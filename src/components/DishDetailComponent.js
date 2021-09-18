@@ -50,7 +50,7 @@ const RenderComments = ({ comments, postComment, dishId }) => {
                         })}
                     </Stagger>
                 </ul>
-                <CommentFrom dishId={dishId} postComment={postComment} />
+                <CommentForm dishId={dishId} postComment={postComment} />
             </div>
         )
     } else {
@@ -117,7 +117,7 @@ const DishDetail = (props) => {
 
 }
 
-class CommentFrom extends Component {
+class CommentForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
