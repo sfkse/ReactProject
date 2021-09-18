@@ -11,7 +11,6 @@ const RenderMenuItem = ({ dish }) => {
                 <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
                 <CardImgOverlay>
                     <CardTitle>{dish.name}</CardTitle>
-                    <p>{dish.description}</p>
                 </CardImgOverlay>
             </Link>
 

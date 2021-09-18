@@ -32,9 +32,11 @@ class Main extends Component {
     // eslint-disable-next-line no-useless-constructor
     constructor(props) {
         super(props);
+        console.log(props)
     }
 
     componentDidMount() {
+
         this.props.fetchDishes();
         this.props.fetchComments();
         this.props.fetchPromos();

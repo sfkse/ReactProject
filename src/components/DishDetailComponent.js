@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components'
 
 const minLength = (len) => (val) => val && (val.length >= len)
 const maxLength = (len) => (val) => !val || (val.length <= len)
@@ -12,13 +13,18 @@ const maxLength = (len) => (val) => !val || (val.length <= len)
 const RenderDish = ({ dish }) => {
 
     return (
-        <Card >
-            <CardImg width="100%" src={baseUrl + dish?.image} alt={dish?.name} />
-            <CardBody>
-                <CardTitle>{dish?.name}</CardTitle>
-                <CardText>{dish?.description}</CardText>
-            </CardBody>
-        </Card>
+        <FadeTransform in
+            transformProps={{
+                exitTransform: 'scale(0.5) translateY(-50%) '
+            }}>
+            <Card >
+                <CardImg width="100%" src={baseUrl + dish?.image} alt={dish?.name} />
+                <CardBody>
+                    <CardTitle>{dish?.name}</CardTitle>
+                    <CardText>{dish?.description}</CardText>
+                </CardBody>
+            </Card>
+        </FadeTransform>
     )
 
 }
@@ -28,21 +34,21 @@ const RenderComments = ({ comments, postComment, dishId }) => {
             <div>
                 <h4>Comments</h4>
                 <ul className="list-unstyled">
-                    {comments.map((com) => {
-                        const commentTime = new Date(com.date);
-                        const monthNames = ["January", "February", "March", "April", "May", "June",
-                            "July", "August", "September", "October", "November", "December"];
-                        return (
-                            <>
-                                <li className="mb-3">
-                                    {com.comment}
-                                </li>
-                                <li className="mb-3">
-                                    --  {com.author},{` ${monthNames[commentTime.getMonth()].slice(0, 3)} ${commentTime.getDate()}, ${commentTime.getFullYear()}`}
-                                </li>
-                            </>
-                        )
-                    })}
+                    <Stagger in>
+                        {comments.map((com) => {
+                            const commentTime = new Date(com.date);
+                            const monthNames = ["January", "February", "March", "April", "May", "June",
+                                "July", "August", "September", "October", "November", "December"];
+                            return (
+                                <Fade in>
+                                    <li key={com.id} className="mb-3">
+                                        <p>{com.comment}</p>
+                                        <p> --  {com.author},{` ${monthNames[commentTime.getMonth()].slice(0, 3)} ${commentTime.getDate()}, ${commentTime.getFullYear()}`}</p>
+                                    </li>
+                                </Fade>
+                            )
+                        })}
+                    </Stagger>
                 </ul>
                 <CommentFrom dishId={dishId} postComment={postComment} />
             </div>
