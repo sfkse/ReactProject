@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
 import { NavLink } from 'react-router-dom'
-
+import { baseUrl } from '../shared/baseUrl';
 class Header extends Component {
     // eslint-disable-next-line no-useless-constructor
     constructor(props) {
@@ -43,7 +43,7 @@ class Header extends Component {
                     <div className="container">
                         <NavbarToggler onClick={this.toggleNav} />
                         <NavbarBrand className='mr-auto' href="/">
-                            <img src="assets/images/logo.png" alt="Ristorante Con Fusion" height='30' width='41' />
+                            <img src={`${baseUrl}/assets/images/logo.png`} alt="Ristorante Con Fusion" height='30' width='41' />
                         </NavbarBrand>
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar>
