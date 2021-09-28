@@ -9,10 +9,11 @@ I have built this project through Coursera Frontend Development with React cours
 - Be able to use Reactstrap for designing responsive React applications
 - Be able to use Redux to design the architecture for a React-Redux application
 
-To run the project properly, follow the steps below:
+**To run the project properly, follow the steps below:
 
+-Install dependencies by running `yarn install`
 -Initialize the project by `yarn start`
--Run `json-server --watch db.json -d 2000 -p 3001` command to start json-server on another terminal
+-Run `json-server --watch db.json -d 2000 -p 3001` command to start json-server on another terminal 
 
 
 
