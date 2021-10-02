@@ -11,9 +11,9 @@ I have built this project through Coursera Frontend Development with React cours
 
 **To run the project properly, follow the steps below:
 
--Install dependencies by running `yarn install`
--Initialize the project by `yarn start`
--Run `json-server --watch db.json -d 2000 -p 3001` command to start json-server on another terminal 
+- Install dependencies by running `yarn install`
+- Initialize the project by `yarn start`
+- Run `json-server --watch db.json -d 2000 -p 3001` command to start json-server on another terminal 
 
 
 
